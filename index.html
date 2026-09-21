@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Impossível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>✨ CADASTRO SUPER FÁCIL!!! ✨</h1>
+        <p>O cadastro mais simples que você já tentou fazer.</p>
+    </header>
+
+    <div class="frustracao">
+        😐 Nível de frustração: <span id="nivel">0</span>%
+    </div>
+
+    <main>
+
+        <!-- TELA INICIAL -->
+        <section id="telaInicial" class="tela ativa">
+
+            <h2>Bem-vindo!</h2>
+
+            <p>
+                Para continuar, escolha uma das opções abaixo.
+                Apenas uma delas faz exatamente o que você espera.
+            </p>
+
+            <div class="botoes-iniciais">
+                <button onclick="aumentarFrustracao(); iniciarCadastro()">
+                    COMEÇAR
+                </button>
+
+                <button onclick="aumentarFrustracao(); alert('Essa opção não faz nada.')">
+                    Começar agora
+                </button>
+
+                <button onclick="aumentarFrustracao(); alert('Você clicou no botão errado.')">
+                    AVANÇAR
+                </button>
+
+                <button onclick="aumentarFrustracao(); alert('Boa tentativa.')">
+                    NÃO QUERO COMEÇAR
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- TELA 1 -->
+        <section id="telaDados" class="tela">
+
+            <h2>Etapa 1 de 3</h2>
+
+            <p class="instrucao">
+                Preencha seus dados corretamente.
+                Ou não. Nós também não sabemos.
+            </p>
+
+            <form id="formDados">
+
+                <label for="nome">Seu nome completo:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome completo, mas não use seu nome completo">
+
+                <label for="email">Seu e-mail:</label>
+                <input type="text" id="email" placeholder="exemplo@exemplo.com">
+
+                <label>Data de nascimento:</label>
+
+                <div class="data">
+                    <input type="number" id="dia" placeholder="Dia">
+                    <input type="number" id="mes" placeholder="Mês">
+                    <input type="number" id="ano" placeholder="Ano">
+                </div>
+
+                <p id="erroDados" class="erro"></p>
+
+                <div class="botoes">
+                    <button type="button" class="cancelar" onclick="aumentarFrustracao(); proximaTela('telaSenha')">
+                        CANCELAR
+                    </button>
+
+                    <button type="button" class="avancar" onclick="validarDados()">
+                        AVANÇAR
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <section id="telaSenha" class="tela">
+
+            <h2>ETAPA 2.7 / 3.4</h2>
+
+            <marquee>
+                ATENÇÃO!!! NÃO DIGITE SUA SENHA!!! OU DIGITE!!!
+            </marquee>
+
+            <p>
+                Crie uma senha seguindo as regras abaixo:
+            </p>
+
+            <div class="regras">
+
+                <p>❌ Mínimo de 8 caracteres</p>
+
+                <p>❌ Máximo de 7 caracteres</p>
+
+                <p>❌ Pelo menos uma letra maiúscula</p>
+
+                <p>❌ Nenhuma letra maiúscula</p>
+
+                <p>❌ Pelo menos um número</p>
+
+                <p>❌ Nenhum número</p>
+
+                <p>❌ Pelo menos um símbolo</p>
+
+                <p>❌ Nenhum símbolo</p>
+
+            </div>
+
+            <label for="senha">
+                Senha que provavelmente será rejeitada:
+            </label>
+
+            <div class="campo-senha">
+
+                <input type="password" id="senha" placeholder="Não digite UX2025!">
+
+                <button type="button" onclick="mostrarSenha()">
+                    👁️
+                </button>
+
+            </div>
+
+            <p id="erroSenha" class="erro"></p>
+
+            <div class="botoes">
+
+                <button type="button" onclick="proximaTela('telaDados'); aumentarFrustracao(15)">
+                    VOLTAR
+                </button>
+
+                <button type="button" onclick="validarSenha()">
+                    CONTINUAR
+                </button>
+
+            </div>
+
+        </section>
+
+        <section id="telaConfirmacao" class="tela">
+
+            <h2>ÚLTIMA ETAPA*</h2>
+
+            <p>
+                *Última etapa conhecida pelo sistema.
+            </p>
+
+            <div class="alerta">
+
+                ⚠️ ATENÇÃO ⚠️
+
+                <br><br>
+
+                Você tem certeza de que tem certeza?
+
+            </div>
+
+            <div class="resumo">
+
+                <p>
+                    <strong>Nome:</strong>
+                    <span id="resumoNome"></span>
+                </p>
+
+                <p>
+                    <strong>E-mail:</strong>
+                    <span id="resumoEmail"></span>
+                </p>
+
+            </div>
+
+
+            <button onclick="confirmarSim()">
+
+                SIM, EU NÃO QUERO CANCELAR
+
+            </button>
+
+
+            <button onclick="confirmarNao()">
+
+                NÃO, EU QUERO CANCELAR
+
+            </button>
+
+
+            <button id="botaoFugitivo" onclick="fugir(this)">
+
+                FINALIZAR
+
+            </button>
+
+
+            <p>
+                <small>
+                    Caso nada funcione, tente clicar em algo diferente.
+                </small>
+            </p>
+
+        </section>
+
+
+        <section id="telaFinal" class="tela final">
+
+            <div class="trofeu">🏆</div>
+
+            <h1>VOCÊ CONSEGUIU!</h1>
+
+            <h2>Isso não deveria ter sido tão difícil.</h2>
+
+            <p>
+                Parabéns por sobreviver ao Cadastro Impossível.
+            </p>
+
+            <div class="resultado">
+
+                <p>
+                    Nível de frustração:
+                </p>
+
+                <strong>
+                    <span id="frustracaoFinal">0</span>%
+                </strong>
+
+                <p>
+                    Tentativas:
+                    <span id="tentativasFinal">0</span>
+                </p>
+
+            </div>
+
+            <p>
+                Agora você pode explicar exatamente por que
+                UX ruim prejudica a experiência do usuário.
+            </p>
+
+            <button onclick="location.reload()">
+                VOLTAR E SOFRER NOVAMENTE
+            </button>
+
+        </section>
+        <script src="script.js"></script>
+
+</body>
+
+</html>
